@@ -26,6 +26,7 @@
 
 	<ItemGroup>
 		<ProjectReference Include="..\Application\Application.csproj" />
+		<ProjectReference Include="..\DAL\DAL.csproj" />
 	</ItemGroup>
 	
 	<ItemGroup>
@@ -53,10 +54,6 @@
 		<None Update="Logs\HeartWebInsurance.internalLog.log">
 			<CopyToOutputDirectory>Always</CopyToOutputDirectory>
 		</None>
-	</ItemGroup>
-	
-	<ItemGroup>
-	  <Folder Include="Controllers\Version1\" />
 	</ItemGroup>
 
 </Project>

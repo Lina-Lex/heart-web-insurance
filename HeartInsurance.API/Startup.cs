@@ -1,10 +1,14 @@
 using Application.Common.ApplicationProperties;
 using Application.Extensions;
+using DAL.DataContext;
+using Domain.Entities;
 using FluentValidation.AspNetCore;
 using HeartInsurance.API.Filters;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
+using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
@@ -30,6 +34,13 @@ namespace HeartInsurance.API
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
+            services.AddDbContext<AppDbContext>(options => options.UseSqlServer(Configuration.GetConnectionString("ConnStr")));
+            
+            // For Identity  
+            services.AddIdentity<ApplicationUser, IdentityRole>()
+                .AddEntityFrameworkStores<AppDbContext>()
+                .AddDefaultTokenProviders();
+
             services.AddControllers(options => options.Filters.Add(new ApiExceptionFilter()))
                 .AddNewtonsoftJson()
                 .AddJsonOptions(opts =>
@@ -45,6 +56,7 @@ namespace HeartInsurance.API
             services.AddCqrs();
             services.AddSwagger();
             services.AddServiceInjections(); // a file that contains all depency injections
+            services.AddServiceAuthentication(Configuration); // Adding Authentication  
             #endregion
         }
 
@@ -63,6 +75,10 @@ namespace HeartInsurance.API
             app.UseHttpsRedirection();
 
             app.UseRouting();
+
+            app.UseAuthentication();
+            app.UseAuthorization();
+
             app.UseSwagger();
             app.UseSwaggerUI(c => { c.SwaggerEndpoint("../swagger/v1/swagger.json", $"{Information.APP_NAME} {Information.Version.ToUpper()}"); });
             app.UseAuthorization();

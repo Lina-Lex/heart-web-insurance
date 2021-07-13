@@ -1,12 +1,17 @@
 ﻿using System.Collections.Generic;
 
-namespace Application.Common.Models
+namespace Application.Common.Responses
 {
-    public class ResponseModel
+    public class ResponseModel : ResponseCodes
     {
         public bool Status { get; set; }
         public string Message { get; set; }
 
+        private readonly ResponseCodes responseCodes = new ResponseCodes();
+        public ResponseModel()
+        {
+            ResponseStatusCodes = ResponseStatusDescription.GetMessage(responseCodes);
+        }
         public static ResponseModel Success(string message = null)
         {
             return new ResponseModel()
