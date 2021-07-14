@@ -1,5 +1,4 @@
 ﻿using Application.Common.Exceptions;
-using Application.Common.Models.UserModels;
 using Application.Common.Responses;
 using Application.Interfaces.Application;
 using FluentValidation;
@@ -11,41 +10,32 @@ using System.Threading.Tasks;
 
 namespace Application.Handlers.Commands
 {
-    public class UserSignUpCommand : IRequest<ResponseModel>
+    public class UserSignInCommand : IRequest<ResponseModel>
     {
-        public string OrganizationName { get; set; }
         [Required]
         public string Email { get; set; }
-        [Required]
-        public string Name { get; set; }
     }
-    public class UserSignUpCommandValidator : AbstractValidator<UserSignUpCommand>
+    public class UserSignInCommandValidator : AbstractValidator<UserSignInCommand>
     {
-        public UserSignUpCommandValidator()
+        public UserSignInCommandValidator()
         {
-            RuleFor(c => c.Name).NotEmpty();
             RuleFor(c => c.Email).NotEmpty();
         }
     }
-    public class UserSignUpCommandHandler : IRequestHandler<UserSignUpCommand, ResponseModel>
+    public class UserSignInCommandHandler : IRequestHandler<UserSignInCommand, ResponseModel>
     {
         private readonly ISystemUserActions systemUser;
-        public UserSignUpCommandHandler(ISystemUserActions systemUser)
+        public UserSignInCommandHandler(ISystemUserActions systemUser)
         {
             this.systemUser = systemUser;
         }
-        public async Task<ResponseModel> Handle(UserSignUpCommand request, CancellationToken cancellationToken)
+        public async Task<ResponseModel> Handle(UserSignInCommand request, CancellationToken cancellationToken)
         {
             try
             {
                 if (request != null)
                 {
-                    var result = await systemUser.SignUp(new ApplicationUserModel
-                    {
-                        Email = request.Email,
-                        Name = request.Name,
-                        OrganizationName = request.OrganizationName
-                    });
+                    var result = await systemUser.SignIn(request.Email);
                     if (result.Status.Equals(true))
                         return ResponseModel.Success(result.Message);
 

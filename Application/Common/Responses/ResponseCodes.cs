@@ -12,14 +12,10 @@
             ResponseStatusCodes = statusCode;
         }
 
-        //public static ResponseCodes Description()
-        //{
-        //    statusDescription = ResponseStatusDescription.GetMessage(ResponseStatusCodes)
-        //}
-
         public const string USER_ALREADY_EXIST = CODE_PREFIX + "01";
         public const string SUCCESSFUL = CODE_PREFIX + "00";
         public const string FAILED = CODE_PREFIX + "11";
+        public const string USER_NOTFOUND = CODE_PREFIX + "40";
     }
 
     public class ResponseStatusDescription
@@ -33,6 +29,8 @@
                 if (responeStatus.ResponseStatusCodes.Contains("00"))
                     return string.Format(NormalDescriptionToString(responeStatus.ResponseStatusCodes));
                 if (responeStatus.ResponseStatusCodes.Contains("11"))
+                    return string.Format(NormalDescriptionToString(responeStatus.ResponseStatusCodes));
+                if (responeStatus.ResponseStatusCodes.Contains("40"))
                     return string.Format(NormalDescriptionToString(responeStatus.ResponseStatusCodes));
             }
             return string.Empty;

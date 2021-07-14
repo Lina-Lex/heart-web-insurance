@@ -44,6 +44,7 @@
   </ItemGroup>
 
   <ItemGroup>
+    <ProjectReference Include="..\DAL\DAL.csproj" />
     <ProjectReference Include="..\Domain\Domain.csproj" />
     <ProjectReference Include="..\Infrastructure\Infrastructure.csproj" />
   </ItemGroup>
@@ -52,6 +53,7 @@
     <Folder Include="Common\Extensions\" />
     <Folder Include="Common\DTOs\" />
     <Folder Include="Common\Helpers\SmsHelper\" />
+    <Folder Include="Common\Abstracts\" />
     <Folder Include="Common\Repositories\" />
     <Folder Include="Handlers\Queries\" />
   </ItemGroup>
