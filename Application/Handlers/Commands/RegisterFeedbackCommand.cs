@@ -2,6 +2,7 @@
 using Application.Common.Responses;
 using Application.Interfaces.Application;
 using FluentValidation;
+using Infrastructure.Services.FeedbackService;
 using MediatR;
 using System;
 using System.ComponentModel.DataAnnotations;
@@ -16,35 +17,34 @@ namespace Application.Handlers.Commands
         [Required]
         public string Message { get; set; }
 
-        [JsonIgnore]
-        public string Token { get; set; }
-    }
+        [Required]
+        public string PhoneNumber { get; set; }
 
-    public class FeedbackCommandValidator : AbstractValidator<RegisterFeedbackCommand>
-    {
-        public FeedbackCommandValidator()
+        [JsonIgnore]
+        public string Token { get; private set; }
+
+        public void SetToken(string token)
         {
-            RuleFor(c => c.Message).NotEmpty();
-            RuleFor(c => c.Token).NotEmpty();
+            Token = token;
         }
     }
 
     public class FeedbackCommandHandler : IRequestHandler<RegisterFeedbackCommand, ResponseModel>
     {
-        private readonly ISystemUserActions systemUser;
-        public FeedbackCommandHandler(ISystemUserActions systemUser)
+        private readonly IFeedbackService _feedbackService;
+        public FeedbackCommandHandler(IFeedbackService feedbackService)
         {
-            this.systemUser = systemUser;
+            this._feedbackService = feedbackService;
         }
-
         public async Task<ResponseModel> Handle(RegisterFeedbackCommand request, CancellationToken cancellationToken)
         {
             try
             {
                 if (request != null)
                 {
-
+                    _feedbackService.RegisterFeedback(request.PhoneNumber, request.PhoneNumber);
                 }
+
                 return ResponseModel.Failure("Request is empty... Feedback registration failed.");
             }
             catch (Exception ex) 

@@ -22,9 +22,9 @@ namespace HeartInsurance.API.Controllers
         [ProducesResponseType(typeof(ResponseModel), (int)HttpStatusCode.OK)]
         [ProducesResponseType(typeof(ResponseModel), (int)HttpStatusCode.BadRequest)]
         [ProducesResponseType(typeof(ResponseModel), (int)HttpStatusCode.InternalServerError)]
-        public async Task<IActionResult> Post([FromHeader] string token, [FromBody] RegisterFeedbackCommand command)
+        public async Task<IActionResult> Post([FromHeader]string token, [FromBody]RegisterFeedbackCommand command)
         {
-            command.Token = token;
+            command.SetToken(token);
             return Ok(await Mediator.Send(command));
         }
     }

@@ -3,12 +3,12 @@ using Application.Implementations;
 using Application.Interfaces.Application;
 using DAL.DataContext;
 using Infrastructure.Services.EmailService;
+using Infrastructure.Services.FeedbackService;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.IdentityModel.Tokens;
 using System;
-using System.Text;
 
 namespace Application.Extensions
 {
@@ -19,6 +19,7 @@ namespace Application.Extensions
             services.AddTransient<ISystemUserActions, SystemUserActions>();
             services.AddTransient<IEmailSender, EmailSender>();
             services.AddTransient<IApplicationDbContext, AppDbContext>();
+            services.AddTransient<IFeedbackService, FeedbackService>();
             services.AddScoped(typeof(GeneratePassCode));
             return services;
         }
