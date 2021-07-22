@@ -6,7 +6,7 @@
         public string ResponseStatusCodes { get; set; }
         public string StatusDescription { get; set; }
         public ResponseCodes()
-        {}
+        { }
         public ResponseCodes(string statusCode)
         {
             ResponseStatusCodes = statusCode;

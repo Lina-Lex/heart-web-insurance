@@ -1,4 +1,5 @@
 ﻿using Application.Common.Exceptions;
+using Application.Common.Models;
 using Application.Common.Models.UserModels;
 using Application.Common.Responses;
 using Application.Interfaces.Application;
@@ -6,12 +7,13 @@ using FluentValidation;
 using MediatR;
 using System;
 using System.ComponentModel.DataAnnotations;
+using System.Text.Json.Serialization;
 using System.Threading;
 using System.Threading.Tasks;
 
 namespace Application.Handlers.Commands
 {
-    public class UserSignUpCommand : IRequest<ResponseModel>
+    public class UserSignUpCommand : RequestModel, IRequest<ResponseModel>
     {
         public string OrganizationName { get; set; }
         [Required]
@@ -47,8 +49,18 @@ namespace Application.Handlers.Commands
                         OrganizationName = request.OrganizationName
                     });
                     if (result.Status.Equals(true))
-                        return ResponseModel.Success(result.Message);
-
+                    {
+                        var responseResult = new ApplicationUserResponse
+                        {
+                            ApplicationUserId = result.Data.ApplicationUserId,
+                            Email = result.Data.Email,
+                            Name = result.Data.Name,
+                            Token = result.Data.Token
+                        };
+                        
+                        return ResponseModel<ApplicationUserResponse>.Success(responseResult, result.Message);
+                    }
+                       
                     return ResponseModel.Failure(result.Message);
                 }
                 return ResponseModel.Failure("Request is empty... Failed signing-in.");

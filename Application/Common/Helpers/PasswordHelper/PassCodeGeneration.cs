@@ -3,6 +3,7 @@ using Application.Common.Utilities;
 using Application.Helper;
 using DAL.DataContext;
 using Domain.Entities;
+using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
 using System;
 using System.Linq;
@@ -21,11 +22,13 @@ namespace Application.Common.Helpers.PasswordHelper
     public class GeneratePassCode : PassCodeGeneration
     {
         private readonly IApplicationDbContext dbContext;
+        private readonly UserManager<ApplicationUser> userManager;
         readonly Random Random;
 
-        public GeneratePassCode(IApplicationDbContext dbContext)
+        public GeneratePassCode(IApplicationDbContext dbContext, UserManager<ApplicationUser> userManager)
         {
             this.dbContext = dbContext;
+            this.userManager = userManager;
             Random = new Random();
         }
         public override string CreatePassCode()
@@ -44,27 +47,35 @@ namespace Application.Common.Helpers.PasswordHelper
         public async override Task<PassCodeResponse> OneTimePassCode(string email)
         {
             var resposeResult = new PassCodeResponse();
-
-            var passCode = dbContext.PassCode.FirstOrDefault(x => x.Email.Equals(email));
-            if (passCode.Equals(null))
+            var newPassCode = CreatePassCode();
+            var user = await userManager.FindByEmailAsync(email);
+            if(user != null)
             {
-                await dbContext.PassCode.AddAsync(new PassCode
+                var passCode = dbContext.PassCode.FirstOrDefault(x => x.Email.Equals(user.Email));
+                if (passCode == null)
                 {
-                    Email = email,
-                    CodeValue = CreatePassCode(),
-                    IsApplied = false,
-                });
+                    var result = dbContext.PassCode.Add(new PassCode
+                    {
+                        Email = email,
+                        EncCodeValue = newPassCode,
+                        IsApplied = false,
+                    });
+                    dbContext.SaveChanges();
 
-                resposeResult.Code = passCode.CodeValue;
+                    resposeResult.Code = result.Entity.EncCodeValue;
+                }
+                else
+                {
+                    passCode.EncCodeValue = newPassCode;
+                    passCode.InitiatedTime = DateTime.UtcNow;
+                    passCode.LastCreatedOrUpdated =  DateTime.UtcNow;
+                    passCode.UniqueCodeId = Guid.NewGuid().ToString("N");
+                    dbContext.PassCode.Update(passCode);
+                    dbContext.SaveChanges();
+
+                    resposeResult.Code = passCode.EncCodeValue;
+                }
             }
-            else
-            {
-                passCode.CodeValue = CreatePassCode();
-                resposeResult.Code = passCode.CodeValue;
-                dbContext.PassCode.Update(passCode);
-            }
-                
-            await dbContext.SaveChangesAsync();
 
             return resposeResult;
         }
@@ -81,18 +92,18 @@ namespace Application.Common.Helpers.PasswordHelper
             {
                 uniqueId = user.UniqueCodeId;
                 isApplied = user.IsApplied;
-                storedCode = user.CodeValue;
+                storedCode = user.EncCodeValue;
                 ValueInitiatedTime = user.InitiatedTime;
 
-                int CodeExpiredTime = PassCodeInterval(DateTime.UtcNow, ValueInitiatedTime);
+                int currentMinute = PassCodeInterval(DateTime.UtcNow, ValueInitiatedTime);
 
-                if (CodeExpiredTime <= Constants.PASSCODE_EXPIRED_TIME_IN_MINUTES)
+                if (currentMinute <= Constants.PASSCODE_EXPIRED_TIME_IN_MINUTES)
                 {
                     if (!isApplied && uniqueId != null)
-                        if (storedCode.Equals(storedCode))
+                        if (storedCode.Equals(generatedValue))
                         {
                             user.IsApplied = true;
-                            user.LastCreatedOrUpdated = DateTime.UtcNow;
+                            user.LastUpdatedDate = DateTime.UtcNow;
 
                             var updated = dbContext.PassCode.Update(user);
                             if (updated.State.Equals(EntityState.Modified))

@@ -19,11 +19,12 @@ namespace HeartInsurance.API
 {
     public class Startup
     {
-        public Startup(IHostEnvironment hostingEnvironment)
+        public Startup(IHostEnvironment env)
         {
             var builder = new ConfigurationBuilder()
-                .SetBasePath(hostingEnvironment.ContentRootPath)
-                .AddJsonFile($"appsettings.{hostingEnvironment.EnvironmentName}.json", reloadOnChange: true, optional: true)
+                .SetBasePath(env.ContentRootPath)
+                .AddJsonFile("appsettings.json", optional: true, reloadOnChange: true)
+                .AddJsonFile($"appsettings.{env.EnvironmentName}.json", optional: true)
                 .AddEnvironmentVariables();
 
             Configuration = builder.Build();
@@ -34,9 +35,10 @@ namespace HeartInsurance.API
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
-            services.AddDbContext<AppDbContext>(options => options.UseSqlServer(Configuration.GetConnectionString("ConnStr")));
-            
-            services.AddIdentity<ApplicationUser, IdentityRole>(opt => 
+            services.AddDbContext<AppDbContext>(options => options.UseSqlServer(Configuration.GetConnectionString("DBConnection")));
+            services.AddScoped(typeof(AuthenticationHeaderFilter));
+
+            services.AddIdentity<ApplicationUser, IdentityRole>(opt =>
             {
                 opt.User.RequireUniqueEmail = true;
             })
@@ -58,6 +60,7 @@ namespace HeartInsurance.API
             services.AddCqrs();
             services.AddSwagger();
             services.AddServiceInjections(); // a file that contains all depency injections
+            services.AddServiceInjections(Configuration);
             services.AddServiceAuthentication(Configuration); // Adding Authentication  
             #endregion
         }

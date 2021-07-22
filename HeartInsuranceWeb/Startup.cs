@@ -1,3 +1,4 @@
+using HeartInsuranceWeb.Services.CleintConfig;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.HttpsPolicy;
@@ -18,12 +19,18 @@ namespace HeartInsuranceWeb
             Configuration = configuration;
         }
 
+        public HeartInsurnaceService _insuranceServiceSettings;
+
         public IConfiguration Configuration { get; }
 
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddControllersWithViews();
+
+            services.Configure<HeartInsurnaceService>(opts => 
+            Configuration.GetSection(nameof(HeartInsurnaceService))
+            .Bind(opts));
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

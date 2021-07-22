@@ -4,7 +4,7 @@ using Application.Interfaces.Application;
 using FluentValidation;
 using MediatR;
 using System;
-using System.Text.Json.Serialization;
+using System.ComponentModel.DataAnnotations;
 using System.Threading;
 using System.Threading.Tasks;
 
@@ -12,16 +12,18 @@ namespace Application.Handlers.Commands
 {
     public class EmailConfirmationCommand : IRequest<ResponseModel>
     {
+        [Required]
         public string Email { get; set; }
-        [JsonIgnore]
-        public string Token { get; set; }
+
+        [Required]
+        public string ConfirmationToken { get; set; }
     }
     public class EmailConfirmationCommandValidator : AbstractValidator<EmailConfirmationCommand>
     {
         public EmailConfirmationCommandValidator()
         {
             RuleFor(c => c.Email).NotEmpty();
-            RuleFor(c => c.Token).NotEmpty();
+            RuleFor(c => c.ConfirmationToken).NotEmpty();
         }
     }
     public class EmailConfirmationCommandHandler : IRequestHandler<EmailConfirmationCommand, ResponseModel>
@@ -37,7 +39,7 @@ namespace Application.Handlers.Commands
             {
                 if (request != null)
                 {
-                    var result = await systemUser.EmailConfirmation(request.Email, request.Token);
+                    var result = await systemUser.EmailConfirmation(request.Email, request.ConfirmationToken);
                     if (result.Status.Equals(true))
                         return ResponseModel.Success("Registration completed | Login now.");
 

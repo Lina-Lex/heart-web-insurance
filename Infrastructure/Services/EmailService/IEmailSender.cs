@@ -8,7 +8,6 @@ namespace Infrastructure.Services.EmailService
     public interface IEmailSender
     {
         Task<Response> SendEmailAsync(EmailSetting emailSetting);
-        void SendConfirmationMail(ApplicationUser user);
     }
     public class EmailSetting
     {

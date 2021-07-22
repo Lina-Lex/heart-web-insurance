@@ -35,7 +35,7 @@ namespace Application.Common.Behaviours
                 var userId = string.Empty;
                 var userName = string.Empty;
 
-                _logger.LogWarning("Pension Annuitant Long Running Request: {Name} ({ElapsedMilliseconds} milliseconds) {@UserId} {@UserName} {@Request}",
+                _logger.LogWarning("Heart Insurance Long Running Request: {Name} ({ElapsedMilliseconds} milliseconds) {@UserId} {@UserName} {@Request}",
                     requestName, elapsedMilliseconds, userId, userName, request);
             }
 
