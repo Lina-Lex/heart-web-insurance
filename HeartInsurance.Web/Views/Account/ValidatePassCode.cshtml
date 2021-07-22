@@ -1,0 +1,51 @@
+﻿@model HeartInsurance.Web.ViewModels.PassCodeValidationViewModel
+
+@{
+    ViewData["Title"] = "Validate Pass code";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div class="FullSize">
+    <div class="container h-100 card col-md-8">
+        <div class="row h-100 justify-content-center align-items-center">
+            <div class="col-md-5">
+                <div class="pb-4 sign-up-title"><h2>Pass code validation</h2></div>
+                <div class="pb-4">
+                    <h6>
+                        <strong>
+                            Enter the PASS CODE sent to your email, to gain access to your account
+                        </strong>
+                    </h6>
+                </div>
+                <form asp-action="ValidatePassCode" method="post" enctype="multipart/form-data">
+                    <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+                    <input asp-for="Email" type="hidden" class="input_control" value="@TempData["email"]" />
+                    <div class="form-group">
+                        <input asp-for="CodeValue" class="form-control input_control" />
+                        <span asp-validation-for="CodeValue" class="text-danger"></span>
+                    </div>
+                    <div class="form-group">
+                        <input type="submit" value="Get Access" class="btn btn-primary rounded btn-block" />
+                    </div>
+                    <div class="form-group">
+                        @if (ViewBag.Message != null)
+                        {
+                            <div class="alert alert-success">@ViewBag.Message</div>
+                        }
+                        else
+                        {
+                            <div class="text-danger">@ViewBag.Message</div>
+                        }
+                    </div>
+                </form>
+            </div>
+            <div class="col-md-5">
+                <img src="~/assets/images/Signup_img.PNG" style="width:100%" />
+            </div>
+        </div>
+    </div>
+</div>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}
