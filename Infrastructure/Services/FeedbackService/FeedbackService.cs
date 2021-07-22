@@ -1,17 +1,17 @@
-﻿using Infrastructure.Config;
-using Infrastructure.Handler;
-using Infrastructure.Services.ConfigServices;
+﻿using Infrastructure.Services.ConfigServices;
+using Infrastructure.Services.Handler;
+using Microsoft.Extensions.Options;
 using System;
 
 namespace Infrastructure.Services.FeedbackService
 {
     public class FeedbackService : IFeedbackService
     {
-        private readonly FeedbackConfiguration config;
+        private readonly FeedbackServiceOptions config;
 
-        public FeedbackService()
+        public FeedbackService(IOptions<FeedbackServiceOptions> options)
         {
-            config = FeedbackConfiguration.GetInstance;
+            config = options.Value;
         }
 
         public bool RegisterFeedback(string phoneNumber, string message)

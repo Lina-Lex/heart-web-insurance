@@ -38,6 +38,10 @@ namespace Application.Extensions
             config.GetSection(ServiceAuthorizationOptions.Authorization)
            .Bind(opts));
 
+            services.Configure<FeedbackServiceOptions>(opts =>
+            config.GetSection(FeedbackServiceOptions.FeedbackService)
+            .Bind(opts));
+
             services.AddSingleton(config);
             services.AddOptions();
             return services;
