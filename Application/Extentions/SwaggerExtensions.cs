@@ -1,4 +1,5 @@
 ﻿using Application.Common.ApplicationProperties;
+using Application.Common.Filters;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.OpenApi.Models;
 using System.Collections.Generic;
@@ -24,9 +25,10 @@ namespace Application.Extensions
                 c.AddSecurityDefinition("Bearer", new OpenApiSecurityScheme()
                 {
                     In = ParameterLocation.Header,
-                    Description = "Authorization format : Bearer {token}",
+                    Description = "Authorization format : Bearer token",
                     Name = "Authorization",
                     Type = SecuritySchemeType.ApiKey,
+                    BearerFormat = "JWT",
                     Scheme = "Bearer"
                 });
 
@@ -46,6 +48,7 @@ namespace Application.Extensions
                         new List<string>()
                     }
                 });
+                //c.OperationFilter<SwaggerHeaderAttributeFilter>();
             });
 
         }

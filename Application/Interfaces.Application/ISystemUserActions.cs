@@ -6,8 +6,8 @@ namespace Application.Interfaces.Application
 {
     public interface ISystemUserActions
     {
-        Task<ResponseModel> SignUp(ApplicationUserModel model);
-        Task<ResponseModel> SignIn(string email);
+        Task<ResponseModel<ApplicationUserResponse>> SignUp(ApplicationUserModel model);
+        Task<ResponseModel<BaseUserResponse>> SignIn(string email);
         Task<ResponseModel> VerifyPassCodeThenLogin(string email, string generatedValue);
         Task<ResponseModel> EmailConfirmation(string email, string token);
     }

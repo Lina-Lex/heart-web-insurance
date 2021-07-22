@@ -6,7 +6,7 @@ namespace Domain.Entities
     {
         public string Email { get; set; }
         public string UniqueCodeId { get; set; } = Guid.NewGuid().ToString("N");
-        public string CodeValue { get; set; }
+        public string EncCodeValue { get; set; }
         public DateTime InitiatedTime { get; set; }
         public DateTime? LastCreatedOrUpdated { get; set; }
         public bool IsApplied { get; set; }
@@ -14,6 +14,7 @@ namespace Domain.Entities
         public PassCode()
         {
             InitiatedTime = DateTime.UtcNow;
+            LastCreatedOrUpdated = DateTime.UtcNow;
         }
     }
 }

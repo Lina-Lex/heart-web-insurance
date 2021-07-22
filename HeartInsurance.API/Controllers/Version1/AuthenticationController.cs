@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace HeartInsurance.API.Controllers.Version1
 {
-    [Route("auths")]
+    [Route("api/v1/auths")]
     [Produces(MediaTypeNames.Application.Json)]
     public class AuthenticationController : BaseEntryController
     {
@@ -17,7 +17,7 @@ namespace HeartInsurance.API.Controllers.Version1
         /// </summary>
         /// <param name="command">The request payload</param>
         /// <returns>Expected to return success if required payload entered.</returns>
-        [ProducesResponseType(typeof(ResponseModel), (int)HttpStatusCode.OK)]
+        [ProducesResponseType(typeof(ResponseModel<ApplicationUserResponse>), (int)HttpStatusCode.OK)]
         [ProducesResponseType(typeof(ResponseModel), (int)HttpStatusCode.BadRequest)]
         [ProducesResponseType(typeof(ResponseModel), (int)HttpStatusCode.InternalServerError)]
         [HttpPost("sign-up")]
@@ -29,12 +29,13 @@ namespace HeartInsurance.API.Controllers.Version1
         /// </summary>
         /// <param name="command">The request payload</param>
         /// <returns>Expected to return success if required payload entered.</returns>
-        [ProducesResponseType(typeof(ResponseModel), (int)HttpStatusCode.OK)]
+        [ProducesResponseType(typeof(ResponseModel<BaseUserResponse>), (int)HttpStatusCode.OK)]
         [ProducesResponseType(typeof(ResponseModel), (int)HttpStatusCode.BadRequest)]
         [ProducesResponseType(typeof(ResponseModel), (int)HttpStatusCode.InternalServerError)]
         [HttpPost("sign-in")]
         public async Task<IActionResult> SignIn([FromBody] UserSignInCommand command)
             => Ok(await Mediator.Send(command));
+
 
         /// <summary>
         /// The endpoint verify generated passcode
@@ -50,16 +51,12 @@ namespace HeartInsurance.API.Controllers.Version1
         /// <summary>
         /// The endpoint email confirmation
         /// </summary>
-        /// <param name="token">Unique generated token for email confirmation</param>
         /// <param name="command">The request for confirmation</param>
         /// <returns>Expected to confirm the user's email.</returns>
         [ProducesResponseType(typeof(ResponseModel), (int)HttpStatusCode.BadRequest)]
         [ProducesResponseType(typeof(ResponseModel), (int)HttpStatusCode.OK)]
-        [HttpPost("email/confirm-email-address")]
-        public async Task<IActionResult> ConfirmEmail([FromHeader] string token, [FromBody] EmailConfirmationCommand command)
-        {
-            command.Token = token;
-            return Ok(await Mediator.Send(command));
-        }
+        [HttpPost("email/confirm-email-address")] 
+        public async Task<IActionResult> ConfirmEmail([FromBody] EmailConfirmationCommand command)
+            => Ok(await Mediator.Send(command));
     }
 }

@@ -5,7 +5,7 @@ using Microsoft.Extensions.DependencyInjection;
 
 namespace HeartInsurance.API.Controllers
 {
-    [Route("api/v1/[controller]")]
+    //[Route("api/v1/[controller]")]
     public class BaseEntryController : ControllerBase
     {
         private IMediator _mediator;
