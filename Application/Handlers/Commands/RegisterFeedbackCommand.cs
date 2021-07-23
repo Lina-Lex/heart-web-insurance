@@ -1,14 +1,11 @@
 ﻿using Application.Common.Exceptions;
-using Application.Common.Helpers.FeedbackHelper;
 using Application.Common.Responses;
-using Application.Interfaces.Application;
 using FluentValidation;
 using Infrastructure.Services.FeedbackService;
 using MediatR;
 using System;
 using System.ComponentModel.DataAnnotations;
 using System.Text.Json.Serialization;
-using System.Text.RegularExpressions;
 using System.Threading;
 using System.Threading.Tasks;
 
@@ -20,7 +17,7 @@ namespace Application.Handlers.Commands
         public string Message { get; set; }
 
         [Required]
-        public string PhoneNumber { get; set; }
+        public string Contact { get; set; }
 
         [JsonIgnore]
         public string Token { get; private set; }
@@ -36,7 +33,7 @@ namespace Application.Handlers.Commands
         public RegisterFeedbackCommandValidator()
         {
             RuleFor(c => c.Message).NotEmpty();
-            RuleFor(c => c.PhoneNumber).NotEmpty();
+            RuleFor(c => c.Contact).NotEmpty();
         }
     }
 
@@ -53,12 +50,7 @@ namespace Application.Handlers.Commands
             {
                 if (request != null)
                 {
-                    var phone = ValidatePhoneNumber.Validate(request.PhoneNumber);
-
-                    if(string.IsNullOrEmpty(phone))
-                        return ResponseModel.Failure("Phone invalid. Kindly, try like (012) 345-6789.");
-
-                    var result = _feedbackService.RegisterFeedback(phone, request.Message);
+                    var result = _feedbackService.RegisterFeedback(request.Contact, request.Message);
 
                     if (!result)
                         return ResponseModel.Failure("Register failed. Try again.");

@@ -2,6 +2,6 @@
 {
     public interface IFeedbackService
     {
-        bool RegisterFeedback(string phoneNumber, string message);
+        bool RegisterFeedback(string contact, string message);
     }
 }

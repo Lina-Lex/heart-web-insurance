@@ -14,14 +14,14 @@ namespace Infrastructure.Services.FeedbackService
             config = options.Value;
         }
 
-        public bool RegisterFeedback(string phoneNumber, string message)
+        public bool RegisterFeedback(string contact, string message)
         {
             try
             {
                 var json = new RequestHandler().Post(
                     config.UrlClient, 
                     $"{config.RegisterPath}" +
-                        $"?{config.PhoneParam}{phoneNumber}" +
+                        $"?{config.PhoneParam}{contact}" +
                         $"&{config.MessageParam}{message}"
                     );
                 return true;
