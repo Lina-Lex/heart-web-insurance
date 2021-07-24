@@ -189,5 +189,43 @@ namespace HeartInsurance.Web.Services.HeartInsuranceMicroservice.Interfaces.Impl
 
             return response;
         }
+
+        public async Task<PatientResponse> Patient()
+        {
+            var response = new PatientResponse();
+            try
+            {
+                logger.LogInformation($"{nameof(Patient)} REQUEST INITIATED. NO PAYLOAD");
+
+                var result = await _client.GetAsync(serviceConfig.PatientEndpoint, CancellationToken.None);
+                if (result.IsSuccessStatusCode)
+                {
+                    var responseResult = await result.Content.ReadAsStringAsync();
+                    var jsonRespose = JsonConvert.DeserializeObject<PatientResponse>(responseResult);
+
+                    if (jsonRespose.Status.Equals(true))
+                    {
+                        response.Status = jsonRespose.Status;
+                        response.Message = jsonRespose.Message;
+                    }
+                    response.Status = jsonRespose.Status;
+                    response.Message = jsonRespose.Message;
+                }
+                else
+                {
+                    response.Status = false;
+                    response.Message = "Client request failed";
+                }
+            }
+            catch (Exception ex)
+            {
+                response.Status = false;
+                response.Message = ex.Message.ToString();
+                logger.LogError($"The Response Payload ==> {response} with Errors ===> {ex.Message}");
+                throw;
+            }
+
+            return response;
+        }
     }
 }

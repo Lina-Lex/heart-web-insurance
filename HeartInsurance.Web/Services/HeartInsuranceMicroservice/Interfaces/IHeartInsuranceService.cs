@@ -10,5 +10,6 @@ namespace HeartInsurance.Web.Services.HeartInsuranceMicroservice.Interfaces
         Task<LoginDTOResponse> SignIn(LoginDTORequest request);
         Task<ServiceResponse> ConfirmEmail(EmailConfirmationDTORequest request);
         Task<ServiceResponse> ValidatePassCode(ValidatePasscodeDTORequest request);
+        Task<PatientResponse> Patient();
     }
 }
