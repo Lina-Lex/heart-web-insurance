@@ -1,5 +1,5 @@
 ﻿$(document).ready(function () {
-    $('#myTable').DataTable({
+    $('#patient-table').DataTable({
         "scrollCollapse": true,
         paging: true,
     });
