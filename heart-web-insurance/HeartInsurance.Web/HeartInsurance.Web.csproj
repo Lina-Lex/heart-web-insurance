@@ -1,418 +1,25 @@
-<Project Sdk="Microsoft.NET.Sdk.Web">
+﻿<Project Sdk="Microsoft.NET.Sdk.Web">
 
   <PropertyGroup>
     <TargetFramework>netcoreapp3.1</TargetFramework>
     <CopyRefAssembliesToPublishDirectory>false</CopyRefAssembliesToPublishDirectory>
+    <UserSecretsId>1935123b-1a3f-4b4b-9184-9e9d59ae9662</UserSecretsId>
+    <DockerDefaultTargetOS>Linux</DockerDefaultTargetOS>
   </PropertyGroup>
 
   <ItemGroup>
-    <Content Remove="wwwroot\dist\bootstrap\js\bootstrap.bundle.js" />
-    <Content Remove="wwwroot\dist\bootstrap\js\bootstrap.bundle.js.map" />
-    <Content Remove="wwwroot\dist\bootstrap\js\bootstrap.bundle.min.js" />
-    <Content Remove="wwwroot\dist\bootstrap\js\bootstrap.bundle.min.js.map" />
-    <Content Remove="wwwroot\dist\bootstrap\js\bootstrap.js" />
-    <Content Remove="wwwroot\dist\bootstrap\js\bootstrap.js.map" />
-    <Content Remove="wwwroot\dist\bootstrap\js\bootstrap.min.js" />
-    <Content Remove="wwwroot\dist\bootstrap\js\bootstrap.min.js.map" />
-    <Content Remove="wwwroot\dist\chart.js\Chart.bundle.js" />
-    <Content Remove="wwwroot\dist\chart.js\Chart.bundle.min.js" />
-    <Content Remove="wwwroot\dist\chart.js\Chart.css" />
-    <Content Remove="wwwroot\dist\chart.js\Chart.js" />
-    <Content Remove="wwwroot\dist\chart.js\Chart.min.css" />
-    <Content Remove="wwwroot\dist\chart.js\Chart.min.js" />
-    <Content Remove="wwwroot\dist\css\adminlte.css" />
-    <Content Remove="wwwroot\dist\css\adminlte.css.map" />
-    <Content Remove="wwwroot\dist\css\adminlte.min.css" />
-    <Content Remove="wwwroot\dist\css\adminlte.min.css.map" />
-    <Content Remove="wwwroot\dist\css\alt\adminlte.components.css" />
-    <Content Remove="wwwroot\dist\css\alt\adminlte.components.css.map" />
-    <Content Remove="wwwroot\dist\css\alt\adminlte.components.min.css" />
-    <Content Remove="wwwroot\dist\css\alt\adminlte.components.min.css.map" />
-    <Content Remove="wwwroot\dist\css\alt\adminlte.core.css" />
-    <Content Remove="wwwroot\dist\css\alt\adminlte.core.css.map" />
-    <Content Remove="wwwroot\dist\css\alt\adminlte.core.min.css" />
-    <Content Remove="wwwroot\dist\css\alt\adminlte.core.min.css.map" />
-    <Content Remove="wwwroot\dist\css\alt\adminlte.extra-components.css" />
-    <Content Remove="wwwroot\dist\css\alt\adminlte.extra-components.css.map" />
-    <Content Remove="wwwroot\dist\css\alt\adminlte.extra-components.min.css" />
-    <Content Remove="wwwroot\dist\css\alt\adminlte.extra-components.min.css.map" />
-    <Content Remove="wwwroot\dist\css\alt\adminlte.pages.css" />
-    <Content Remove="wwwroot\dist\css\alt\adminlte.pages.css.map" />
-    <Content Remove="wwwroot\dist\css\alt\adminlte.pages.min.css" />
-    <Content Remove="wwwroot\dist\css\alt\adminlte.pages.min.css.map" />
-    <Content Remove="wwwroot\dist\css\alt\adminlte.plugins.css" />
-    <Content Remove="wwwroot\dist\css\alt\adminlte.plugins.css.map" />
-    <Content Remove="wwwroot\dist\css\alt\adminlte.plugins.min.css" />
-    <Content Remove="wwwroot\dist\css\alt\adminlte.plugins.min.css.map" />
-    <Content Remove="wwwroot\dist\css\fontawesome-free\css\all.css" />
-    <Content Remove="wwwroot\dist\css\fontawesome-free\css\all.min.css" />
-    <Content Remove="wwwroot\dist\css\fontawesome-free\css\brands.css" />
-    <Content Remove="wwwroot\dist\css\fontawesome-free\css\brands.min.css" />
-    <Content Remove="wwwroot\dist\css\fontawesome-free\css\fontawesome.css" />
-    <Content Remove="wwwroot\dist\css\fontawesome-free\css\fontawesome.min.css" />
-    <Content Remove="wwwroot\dist\css\fontawesome-free\css\regular.css" />
-    <Content Remove="wwwroot\dist\css\fontawesome-free\css\regular.min.css" />
-    <Content Remove="wwwroot\dist\css\fontawesome-free\css\solid.css" />
-    <Content Remove="wwwroot\dist\css\fontawesome-free\css\solid.min.css" />
-    <Content Remove="wwwroot\dist\css\fontawesome-free\css\svg-with-js.css" />
-    <Content Remove="wwwroot\dist\css\fontawesome-free\css\svg-with-js.min.css" />
-    <Content Remove="wwwroot\dist\css\fontawesome-free\css\v4-shims.css" />
-    <Content Remove="wwwroot\dist\css\fontawesome-free\css\v4-shims.min.css" />
-    <Content Remove="wwwroot\dist\css\fontawesome-free\webfonts\fa-brands-400.eot" />
-    <Content Remove="wwwroot\dist\css\fontawesome-free\webfonts\fa-brands-400.svg" />
-    <Content Remove="wwwroot\dist\css\fontawesome-free\webfonts\fa-brands-400.ttf" />
-    <Content Remove="wwwroot\dist\css\fontawesome-free\webfonts\fa-brands-400.woff" />
-    <Content Remove="wwwroot\dist\css\fontawesome-free\webfonts\fa-brands-400.woff2" />
-    <Content Remove="wwwroot\dist\css\fontawesome-free\webfonts\fa-regular-400.eot" />
-    <Content Remove="wwwroot\dist\css\fontawesome-free\webfonts\fa-regular-400.svg" />
-    <Content Remove="wwwroot\dist\css\fontawesome-free\webfonts\fa-regular-400.ttf" />
-    <Content Remove="wwwroot\dist\css\fontawesome-free\webfonts\fa-regular-400.woff" />
-    <Content Remove="wwwroot\dist\css\fontawesome-free\webfonts\fa-regular-400.woff2" />
-    <Content Remove="wwwroot\dist\css\fontawesome-free\webfonts\fa-solid-900.eot" />
-    <Content Remove="wwwroot\dist\css\fontawesome-free\webfonts\fa-solid-900.svg" />
-    <Content Remove="wwwroot\dist\css\fontawesome-free\webfonts\fa-solid-900.ttf" />
-    <Content Remove="wwwroot\dist\css\fontawesome-free\webfonts\fa-solid-900.woff" />
-    <Content Remove="wwwroot\dist\css\fontawesome-free\webfonts\fa-solid-900.woff2" />
-    <Content Remove="wwwroot\dist\css\overlayScrollbars\css\OverlayScrollbars.css" />
-    <Content Remove="wwwroot\dist\css\overlayScrollbars\css\OverlayScrollbars.min.css" />
-    <Content Remove="wwwroot\dist\css\overlayScrollbars\js\jquery.overlayScrollbars.js" />
-    <Content Remove="wwwroot\dist\css\overlayScrollbars\js\jquery.overlayScrollbars.min.js" />
-    <Content Remove="wwwroot\dist\css\overlayScrollbars\js\OverlayScrollbars.js" />
-    <Content Remove="wwwroot\dist\css\overlayScrollbars\js\OverlayScrollbars.min.js" />
-    <Content Remove="wwwroot\dist\img\AdminLTELogo.png" />
-    <Content Remove="wwwroot\dist\img\avatar.png" />
-    <Content Remove="wwwroot\dist\img\avatar04.png" />
-    <Content Remove="wwwroot\dist\img\avatar2.png" />
-    <Content Remove="wwwroot\dist\img\avatar3.png" />
-    <Content Remove="wwwroot\dist\img\avatar5.png" />
-    <Content Remove="wwwroot\dist\img\boxed-bg.jpg" />
-    <Content Remove="wwwroot\dist\img\boxed-bg.png" />
-    <Content Remove="wwwroot\dist\img\credit\american-express.png" />
-    <Content Remove="wwwroot\dist\img\credit\cirrus.png" />
-    <Content Remove="wwwroot\dist\img\credit\mastercard.png" />
-    <Content Remove="wwwroot\dist\img\credit\mestro.png" />
-    <Content Remove="wwwroot\dist\img\credit\paypal.png" />
-    <Content Remove="wwwroot\dist\img\credit\paypal2.png" />
-    <Content Remove="wwwroot\dist\img\credit\visa.png" />
-    <Content Remove="wwwroot\dist\img\default-150x150.png" />
-    <Content Remove="wwwroot\dist\img\icons.png" />
-    <Content Remove="wwwroot\dist\img\photo1.png" />
-    <Content Remove="wwwroot\dist\img\photo2.png" />
-    <Content Remove="wwwroot\dist\img\photo3.jpg" />
-    <Content Remove="wwwroot\dist\img\photo4.jpg" />
-    <Content Remove="wwwroot\dist\img\prod-1.jpg" />
-    <Content Remove="wwwroot\dist\img\prod-2.jpg" />
-    <Content Remove="wwwroot\dist\img\prod-3.jpg" />
-    <Content Remove="wwwroot\dist\img\prod-4.jpg" />
-    <Content Remove="wwwroot\dist\img\prod-5.jpg" />
-    <Content Remove="wwwroot\dist\img\user1-128x128.jpg" />
-    <Content Remove="wwwroot\dist\img\user2-160x160.jpg" />
-    <Content Remove="wwwroot\dist\img\user3-128x128.jpg" />
-    <Content Remove="wwwroot\dist\img\user4-128x128.jpg" />
-    <Content Remove="wwwroot\dist\img\user5-128x128.jpg" />
-    <Content Remove="wwwroot\dist\img\user6-128x128.jpg" />
-    <Content Remove="wwwroot\dist\img\user7-128x128.jpg" />
-    <Content Remove="wwwroot\dist\img\user8-128x128.jpg" />
-    <Content Remove="wwwroot\dist\jquery-mapael\jquery.mapael.js" />
-    <Content Remove="wwwroot\dist\jquery-mapael\jquery.mapael.min.js" />
-    <Content Remove="wwwroot\dist\jquery-mapael\maps\france_departments.js" />
-    <Content Remove="wwwroot\dist\jquery-mapael\maps\france_departments.min.js" />
-    <Content Remove="wwwroot\dist\jquery-mapael\maps\README.txt" />
-    <Content Remove="wwwroot\dist\jquery-mapael\maps\usa_states.js" />
-    <Content Remove="wwwroot\dist\jquery-mapael\maps\usa_states.min.js" />
-    <Content Remove="wwwroot\dist\jquery-mapael\maps\world_countries.js" />
-    <Content Remove="wwwroot\dist\jquery-mapael\maps\world_countries.min.js" />
-    <Content Remove="wwwroot\dist\jquery-mapael\maps\world_countries_mercator.js" />
-    <Content Remove="wwwroot\dist\jquery-mapael\maps\world_countries_mercator.min.js" />
-    <Content Remove="wwwroot\dist\jquery-mapael\maps\world_countries_miller.js" />
-    <Content Remove="wwwroot\dist\jquery-mapael\maps\world_countries_miller.min.js" />
-    <Content Remove="wwwroot\dist\jquery-mousewheel\jquery.mousewheel.js" />
-    <Content Remove="wwwroot\dist\jquery-mousewheel\LICENSE.txt" />
-    <Content Remove="wwwroot\dist\jquery-ui\AUTHORS.txt" />
-    <Content Remove="wwwroot\dist\jquery-ui\external\jquery\jquery.js" />
-    <Content Remove="wwwroot\dist\jquery-ui\images\ui-icons_444444_256x240.png" />
-    <Content Remove="wwwroot\dist\jquery-ui\images\ui-icons_555555_256x240.png" />
-    <Content Remove="wwwroot\dist\jquery-ui\images\ui-icons_777620_256x240.png" />
-    <Content Remove="wwwroot\dist\jquery-ui\images\ui-icons_777777_256x240.png" />
-    <Content Remove="wwwroot\dist\jquery-ui\images\ui-icons_cc0000_256x240.png" />
-    <Content Remove="wwwroot\dist\jquery-ui\images\ui-icons_ffffff_256x240.png" />
-    <Content Remove="wwwroot\dist\jquery-ui\jquery-ui.css" />
-    <Content Remove="wwwroot\dist\jquery-ui\jquery-ui.js" />
-    <Content Remove="wwwroot\dist\jquery-ui\jquery-ui.min.css" />
-    <Content Remove="wwwroot\dist\jquery-ui\jquery-ui.min.js" />
-    <Content Remove="wwwroot\dist\jquery-ui\jquery-ui.structure.css" />
-    <Content Remove="wwwroot\dist\jquery-ui\jquery-ui.structure.min.css" />
-    <Content Remove="wwwroot\dist\jquery-ui\jquery-ui.theme.css" />
-    <Content Remove="wwwroot\dist\jquery-ui\jquery-ui.theme.min.css" />
-    <Content Remove="wwwroot\dist\jquery-ui\LICENSE.txt" />
-    <Content Remove="wwwroot\dist\jquery\core.js" />
-    <Content Remove="wwwroot\dist\jquery\jquery.js" />
-    <Content Remove="wwwroot\dist\jquery\jquery.min.js" />
-    <Content Remove="wwwroot\dist\jquery\jquery.min.map" />
-    <Content Remove="wwwroot\dist\jquery\jquery.slim.js" />
-    <Content Remove="wwwroot\dist\jquery\jquery.slim.min.js" />
-    <Content Remove="wwwroot\dist\jquery\jquery.slim.min.map" />
-    <Content Remove="wwwroot\dist\js\adminlte.js" />
-    <Content Remove="wwwroot\dist\js\adminlte.js.map" />
-    <Content Remove="wwwroot\dist\js\adminlte.min.js" />
-    <Content Remove="wwwroot\dist\js\adminlte.min.js.map" />
-    <Content Remove="wwwroot\dist\js\demo.js" />
-    <Content Remove="wwwroot\dist\js\pages\dashboard.js" />
-    <Content Remove="wwwroot\dist\js\pages\dashboard2.js" />
-    <Content Remove="wwwroot\dist\js\pages\dashboard3.js" />
-    <Content Remove="wwwroot\dist\popper\esm\popper-utils.js" />
-    <Content Remove="wwwroot\dist\popper\esm\popper-utils.js.map" />
-    <Content Remove="wwwroot\dist\popper\esm\popper-utils.min.js" />
-    <Content Remove="wwwroot\dist\popper\esm\popper-utils.min.js.map" />
-    <Content Remove="wwwroot\dist\popper\esm\popper.js" />
-    <Content Remove="wwwroot\dist\popper\esm\popper.js.map" />
-    <Content Remove="wwwroot\dist\popper\esm\popper.min.js" />
-    <Content Remove="wwwroot\dist\popper\esm\popper.min.js.map" />
-    <Content Remove="wwwroot\dist\popper\popper-utils.js" />
-    <Content Remove="wwwroot\dist\popper\popper-utils.js.map" />
-    <Content Remove="wwwroot\dist\popper\popper-utils.min.js" />
-    <Content Remove="wwwroot\dist\popper\popper-utils.min.js.map" />
-    <Content Remove="wwwroot\dist\popper\popper.js" />
-    <Content Remove="wwwroot\dist\popper\popper.js.map" />
-    <Content Remove="wwwroot\dist\popper\popper.min.js" />
-    <Content Remove="wwwroot\dist\popper\popper.min.js.map" />
-    <Content Remove="wwwroot\dist\popper\umd\popper-utils.js" />
-    <Content Remove="wwwroot\dist\popper\umd\popper-utils.js.map" />
-    <Content Remove="wwwroot\dist\popper\umd\popper-utils.min.js" />
-    <Content Remove="wwwroot\dist\popper\umd\popper-utils.min.js.map" />
-    <Content Remove="wwwroot\dist\popper\umd\popper.js" />
-    <Content Remove="wwwroot\dist\popper\umd\popper.js.flow" />
-    <Content Remove="wwwroot\dist\popper\umd\popper.js.map" />
-    <Content Remove="wwwroot\dist\popper\umd\popper.min.js" />
-    <Content Remove="wwwroot\dist\popper\umd\popper.min.js.map" />
-    <Content Remove="wwwroot\dist\raphael\.eslintrc.js" />
-    <Content Remove="wwwroot\dist\raphael\dev\banner.txt" />
-    <Content Remove="wwwroot\dist\raphael\dev\raphael.amd.js" />
-    <Content Remove="wwwroot\dist\raphael\dev\raphael.core.js" />
-    <Content Remove="wwwroot\dist\raphael\dev\raphael.svg.js" />
-    <Content Remove="wwwroot\dist\raphael\dev\raphael.vml.js" />
-    <Content Remove="wwwroot\dist\raphael\dev\raphaelTest.html" />
-    <Content Remove="wwwroot\dist\raphael\dev\test\index.html" />
-    <Content Remove="wwwroot\dist\raphael\dev\test\svg\dom.js" />
-    <Content Remove="wwwroot\dist\raphael\dev\test\vml\dom.js" />
-    <Content Remove="wwwroot\dist\raphael\Gruntfile.js" />
-    <Content Remove="wwwroot\dist\raphael\license.txt" />
-    <Content Remove="wwwroot\dist\raphael\raphael.js" />
-    <Content Remove="wwwroot\dist\raphael\raphael.min.js" />
-    <Content Remove="wwwroot\dist\raphael\raphael.no-deps.js" />
-    <Content Remove="wwwroot\dist\raphael\raphael.no-deps.min.js" />
-    <Content Remove="wwwroot\dist\raphael\webpack.config.js" />
+    <Compile Remove="Areas\Views\**" />
+    <Content Remove="Areas\Views\**" />
+    <EmbeddedResource Remove="Areas\Views\**" />
+    <None Remove="Areas\Views\**" />
   </ItemGroup>
 
   <ItemGroup>
     <PackageReference Include="HttpClientHelperSolutions" Version="1.0.0" />
     <PackageReference Include="Microsoft.AspNetCore.Mvc.Razor.RuntimeCompilation" Version="3.1.17" />
+    <PackageReference Include="Microsoft.VisualStudio.Azure.Containers.Tools.Targets" Version="1.11.1" />
     <PackageReference Include="Microsoft.VisualStudio.Web.CodeGeneration.Design" Version="3.1.5" />
     <PackageReference Include="Newtonsoft.Json" Version="13.0.1" />
-  </ItemGroup>
-
-  <ItemGroup>
-    <Folder Include="Areas\Admin\Models\" />
-    <Folder Include="Areas\Views\" />
-  </ItemGroup>
-
-  <ItemGroup>
-    <None Include="wwwroot\dist\bootstrap\js\bootstrap.bundle.js" />
-    <None Include="wwwroot\dist\bootstrap\js\bootstrap.bundle.js.map" />
-    <None Include="wwwroot\dist\bootstrap\js\bootstrap.bundle.min.js" />
-    <None Include="wwwroot\dist\bootstrap\js\bootstrap.bundle.min.js.map" />
-    <None Include="wwwroot\dist\bootstrap\js\bootstrap.js" />
-    <None Include="wwwroot\dist\bootstrap\js\bootstrap.js.map" />
-    <None Include="wwwroot\dist\bootstrap\js\bootstrap.min.js" />
-    <None Include="wwwroot\dist\bootstrap\js\bootstrap.min.js.map" />
-    <None Include="wwwroot\dist\chart.js\Chart.bundle.js" />
-    <None Include="wwwroot\dist\chart.js\Chart.bundle.min.js" />
-    <None Include="wwwroot\dist\chart.js\Chart.css" />
-    <None Include="wwwroot\dist\chart.js\Chart.js" />
-    <None Include="wwwroot\dist\chart.js\Chart.min.css" />
-    <None Include="wwwroot\dist\chart.js\Chart.min.js" />
-    <None Include="wwwroot\dist\css\adminlte.css" />
-    <None Include="wwwroot\dist\css\adminlte.css.map" />
-    <None Include="wwwroot\dist\css\adminlte.min.css" />
-    <None Include="wwwroot\dist\css\adminlte.min.css.map" />
-    <None Include="wwwroot\dist\css\alt\adminlte.components.css" />
-    <None Include="wwwroot\dist\css\alt\adminlte.components.css.map" />
-    <None Include="wwwroot\dist\css\alt\adminlte.components.min.css" />
-    <None Include="wwwroot\dist\css\alt\adminlte.components.min.css.map" />
-    <None Include="wwwroot\dist\css\alt\adminlte.core.css" />
-    <None Include="wwwroot\dist\css\alt\adminlte.core.css.map" />
-    <None Include="wwwroot\dist\css\alt\adminlte.core.min.css" />
-    <None Include="wwwroot\dist\css\alt\adminlte.core.min.css.map" />
-    <None Include="wwwroot\dist\css\alt\adminlte.extra-components.css" />
-    <None Include="wwwroot\dist\css\alt\adminlte.extra-components.css.map" />
-    <None Include="wwwroot\dist\css\alt\adminlte.extra-components.min.css" />
-    <None Include="wwwroot\dist\css\alt\adminlte.extra-components.min.css.map" />
-    <None Include="wwwroot\dist\css\alt\adminlte.pages.css" />
-    <None Include="wwwroot\dist\css\alt\adminlte.pages.css.map" />
-    <None Include="wwwroot\dist\css\alt\adminlte.pages.min.css" />
-    <None Include="wwwroot\dist\css\alt\adminlte.pages.min.css.map" />
-    <None Include="wwwroot\dist\css\alt\adminlte.plugins.css" />
-    <None Include="wwwroot\dist\css\alt\adminlte.plugins.css.map" />
-    <None Include="wwwroot\dist\css\alt\adminlte.plugins.min.css" />
-    <None Include="wwwroot\dist\css\alt\adminlte.plugins.min.css.map" />
-    <None Include="wwwroot\dist\css\fontawesome-free\css\all.css" />
-    <None Include="wwwroot\dist\css\fontawesome-free\css\all.min.css" />
-    <None Include="wwwroot\dist\css\fontawesome-free\css\brands.css" />
-    <None Include="wwwroot\dist\css\fontawesome-free\css\brands.min.css" />
-    <None Include="wwwroot\dist\css\fontawesome-free\css\fontawesome.css" />
-    <None Include="wwwroot\dist\css\fontawesome-free\css\fontawesome.min.css" />
-    <None Include="wwwroot\dist\css\fontawesome-free\css\regular.css" />
-    <None Include="wwwroot\dist\css\fontawesome-free\css\regular.min.css" />
-    <None Include="wwwroot\dist\css\fontawesome-free\css\solid.css" />
-    <None Include="wwwroot\dist\css\fontawesome-free\css\solid.min.css" />
-    <None Include="wwwroot\dist\css\fontawesome-free\css\svg-with-js.css" />
-    <None Include="wwwroot\dist\css\fontawesome-free\css\svg-with-js.min.css" />
-    <None Include="wwwroot\dist\css\fontawesome-free\css\v4-shims.css" />
-    <None Include="wwwroot\dist\css\fontawesome-free\css\v4-shims.min.css" />
-    <None Include="wwwroot\dist\css\fontawesome-free\webfonts\fa-brands-400.eot" />
-    <None Include="wwwroot\dist\css\fontawesome-free\webfonts\fa-brands-400.svg" />
-    <None Include="wwwroot\dist\css\fontawesome-free\webfonts\fa-brands-400.ttf" />
-    <None Include="wwwroot\dist\css\fontawesome-free\webfonts\fa-brands-400.woff" />
-    <None Include="wwwroot\dist\css\fontawesome-free\webfonts\fa-brands-400.woff2" />
-    <None Include="wwwroot\dist\css\fontawesome-free\webfonts\fa-regular-400.eot" />
-    <None Include="wwwroot\dist\css\fontawesome-free\webfonts\fa-regular-400.svg" />
-    <None Include="wwwroot\dist\css\fontawesome-free\webfonts\fa-regular-400.ttf" />
-    <None Include="wwwroot\dist\css\fontawesome-free\webfonts\fa-regular-400.woff" />
-    <None Include="wwwroot\dist\css\fontawesome-free\webfonts\fa-regular-400.woff2" />
-    <None Include="wwwroot\dist\css\fontawesome-free\webfonts\fa-solid-900.eot" />
-    <None Include="wwwroot\dist\css\fontawesome-free\webfonts\fa-solid-900.svg" />
-    <None Include="wwwroot\dist\css\fontawesome-free\webfonts\fa-solid-900.ttf" />
-    <None Include="wwwroot\dist\css\fontawesome-free\webfonts\fa-solid-900.woff" />
-    <None Include="wwwroot\dist\css\fontawesome-free\webfonts\fa-solid-900.woff2" />
-    <None Include="wwwroot\dist\css\overlayScrollbars\css\OverlayScrollbars.css" />
-    <None Include="wwwroot\dist\css\overlayScrollbars\css\OverlayScrollbars.min.css" />
-    <None Include="wwwroot\dist\css\overlayScrollbars\js\jquery.overlayScrollbars.js" />
-    <None Include="wwwroot\dist\css\overlayScrollbars\js\jquery.overlayScrollbars.min.js" />
-    <None Include="wwwroot\dist\css\overlayScrollbars\js\OverlayScrollbars.js" />
-    <None Include="wwwroot\dist\css\overlayScrollbars\js\OverlayScrollbars.min.js" />
-    <None Include="wwwroot\dist\img\AdminLTELogo.png" />
-    <None Include="wwwroot\dist\img\avatar.png" />
-    <None Include="wwwroot\dist\img\avatar04.png" />
-    <None Include="wwwroot\dist\img\avatar2.png" />
-    <None Include="wwwroot\dist\img\avatar3.png" />
-    <None Include="wwwroot\dist\img\avatar5.png" />
-    <None Include="wwwroot\dist\img\boxed-bg.jpg" />
-    <None Include="wwwroot\dist\img\boxed-bg.png" />
-    <None Include="wwwroot\dist\img\credit\american-express.png" />
-    <None Include="wwwroot\dist\img\credit\cirrus.png" />
-    <None Include="wwwroot\dist\img\credit\mastercard.png" />
-    <None Include="wwwroot\dist\img\credit\mestro.png" />
-    <None Include="wwwroot\dist\img\credit\paypal.png" />
-    <None Include="wwwroot\dist\img\credit\paypal2.png" />
-    <None Include="wwwroot\dist\img\credit\visa.png" />
-    <None Include="wwwroot\dist\img\default-150x150.png" />
-    <None Include="wwwroot\dist\img\icons.png" />
-    <None Include="wwwroot\dist\img\photo1.png" />
-    <None Include="wwwroot\dist\img\photo2.png" />
-    <None Include="wwwroot\dist\img\photo3.jpg" />
-    <None Include="wwwroot\dist\img\photo4.jpg" />
-    <None Include="wwwroot\dist\img\prod-1.jpg" />
-    <None Include="wwwroot\dist\img\prod-2.jpg" />
-    <None Include="wwwroot\dist\img\prod-3.jpg" />
-    <None Include="wwwroot\dist\img\prod-4.jpg" />
-    <None Include="wwwroot\dist\img\prod-5.jpg" />
-    <None Include="wwwroot\dist\img\user1-128x128.jpg" />
-    <None Include="wwwroot\dist\img\user2-160x160.jpg" />
-    <None Include="wwwroot\dist\img\user3-128x128.jpg" />
-    <None Include="wwwroot\dist\img\user4-128x128.jpg" />
-    <None Include="wwwroot\dist\img\user5-128x128.jpg" />
-    <None Include="wwwroot\dist\img\user6-128x128.jpg" />
-    <None Include="wwwroot\dist\img\user7-128x128.jpg" />
-    <None Include="wwwroot\dist\img\user8-128x128.jpg" />
-    <None Include="wwwroot\dist\jquery-mapael\jquery.mapael.js" />
-    <None Include="wwwroot\dist\jquery-mapael\jquery.mapael.min.js" />
-    <None Include="wwwroot\dist\jquery-mapael\maps\france_departments.js" />
-    <None Include="wwwroot\dist\jquery-mapael\maps\france_departments.min.js" />
-    <None Include="wwwroot\dist\jquery-mapael\maps\README.txt" />
-    <None Include="wwwroot\dist\jquery-mapael\maps\usa_states.js" />
-    <None Include="wwwroot\dist\jquery-mapael\maps\usa_states.min.js" />
-    <None Include="wwwroot\dist\jquery-mapael\maps\world_countries.js" />
-    <None Include="wwwroot\dist\jquery-mapael\maps\world_countries.min.js" />
-    <None Include="wwwroot\dist\jquery-mapael\maps\world_countries_mercator.js" />
-    <None Include="wwwroot\dist\jquery-mapael\maps\world_countries_mercator.min.js" />
-    <None Include="wwwroot\dist\jquery-mapael\maps\world_countries_miller.js" />
-    <None Include="wwwroot\dist\jquery-mapael\maps\world_countries_miller.min.js" />
-    <None Include="wwwroot\dist\jquery-mousewheel\jquery.mousewheel.js" />
-    <None Include="wwwroot\dist\jquery-mousewheel\LICENSE.txt" />
-    <None Include="wwwroot\dist\jquery-ui\AUTHORS.txt" />
-    <None Include="wwwroot\dist\jquery-ui\external\jquery\jquery.js" />
-    <None Include="wwwroot\dist\jquery-ui\images\ui-icons_444444_256x240.png" />
-    <None Include="wwwroot\dist\jquery-ui\images\ui-icons_555555_256x240.png" />
-    <None Include="wwwroot\dist\jquery-ui\images\ui-icons_777620_256x240.png" />
-    <None Include="wwwroot\dist\jquery-ui\images\ui-icons_777777_256x240.png" />
-    <None Include="wwwroot\dist\jquery-ui\images\ui-icons_cc0000_256x240.png" />
-    <None Include="wwwroot\dist\jquery-ui\images\ui-icons_ffffff_256x240.png" />
-    <None Include="wwwroot\dist\jquery-ui\jquery-ui.css" />
-    <None Include="wwwroot\dist\jquery-ui\jquery-ui.js" />
-    <None Include="wwwroot\dist\jquery-ui\jquery-ui.min.css" />
-    <None Include="wwwroot\dist\jquery-ui\jquery-ui.min.js" />
-    <None Include="wwwroot\dist\jquery-ui\jquery-ui.structure.css" />
-    <None Include="wwwroot\dist\jquery-ui\jquery-ui.structure.min.css" />
-    <None Include="wwwroot\dist\jquery-ui\jquery-ui.theme.css" />
-    <None Include="wwwroot\dist\jquery-ui\jquery-ui.theme.min.css" />
-    <None Include="wwwroot\dist\jquery-ui\LICENSE.txt" />
-    <None Include="wwwroot\dist\jquery\core.js" />
-    <None Include="wwwroot\dist\jquery\jquery.js" />
-    <None Include="wwwroot\dist\jquery\jquery.min.js" />
-    <None Include="wwwroot\dist\jquery\jquery.min.map" />
-    <None Include="wwwroot\dist\jquery\jquery.slim.js" />
-    <None Include="wwwroot\dist\jquery\jquery.slim.min.js" />
-    <None Include="wwwroot\dist\jquery\jquery.slim.min.map" />
-    <None Include="wwwroot\dist\js\adminlte.js" />
-    <None Include="wwwroot\dist\js\adminlte.js.map" />
-    <None Include="wwwroot\dist\js\adminlte.min.js" />
-    <None Include="wwwroot\dist\js\adminlte.min.js.map" />
-    <None Include="wwwroot\dist\js\demo.js" />
-    <None Include="wwwroot\dist\js\pages\dashboard.js" />
-    <None Include="wwwroot\dist\js\pages\dashboard2.js" />
-    <None Include="wwwroot\dist\js\pages\dashboard3.js" />
-    <None Include="wwwroot\dist\popper\esm\popper-utils.js" />
-    <None Include="wwwroot\dist\popper\esm\popper-utils.js.map" />
-    <None Include="wwwroot\dist\popper\esm\popper-utils.min.js" />
-    <None Include="wwwroot\dist\popper\esm\popper-utils.min.js.map" />
-    <None Include="wwwroot\dist\popper\esm\popper.js" />
-    <None Include="wwwroot\dist\popper\esm\popper.js.map" />
-    <None Include="wwwroot\dist\popper\esm\popper.min.js" />
-    <None Include="wwwroot\dist\popper\esm\popper.min.js.map" />
-    <None Include="wwwroot\dist\popper\popper-utils.js" />
-    <None Include="wwwroot\dist\popper\popper-utils.js.map" />
-    <None Include="wwwroot\dist\popper\popper-utils.min.js" />
-    <None Include="wwwroot\dist\popper\popper-utils.min.js.map" />
-    <None Include="wwwroot\dist\popper\popper.js" />
-    <None Include="wwwroot\dist\popper\popper.js.map" />
-    <None Include="wwwroot\dist\popper\popper.min.js" />
-    <None Include="wwwroot\dist\popper\popper.min.js.map" />
-    <None Include="wwwroot\dist\popper\umd\popper-utils.js" />
-    <None Include="wwwroot\dist\popper\umd\popper-utils.js.map" />
-    <None Include="wwwroot\dist\popper\umd\popper-utils.min.js" />
-    <None Include="wwwroot\dist\popper\umd\popper-utils.min.js.map" />
-    <None Include="wwwroot\dist\popper\umd\popper.js" />
-    <None Include="wwwroot\dist\popper\umd\popper.js.flow" />
-    <None Include="wwwroot\dist\popper\umd\popper.js.map" />
-    <None Include="wwwroot\dist\popper\umd\popper.min.js" />
-    <None Include="wwwroot\dist\popper\umd\popper.min.js.map" />
-    <None Include="wwwroot\dist\raphael\.eslintrc.js" />
-    <None Include="wwwroot\dist\raphael\dev\banner.txt" />
-    <None Include="wwwroot\dist\raphael\dev\raphael.amd.js" />
-    <None Include="wwwroot\dist\raphael\dev\raphael.core.js" />
-    <None Include="wwwroot\dist\raphael\dev\raphael.svg.js" />
-    <None Include="wwwroot\dist\raphael\dev\raphael.vml.js" />
-    <None Include="wwwroot\dist\raphael\dev\raphaelTest.html" />
-    <None Include="wwwroot\dist\raphael\dev\test\index.html" />
-    <None Include="wwwroot\dist\raphael\dev\test\svg\dom.js" />
-    <None Include="wwwroot\dist\raphael\dev\test\vml\dom.js" />
-    <None Include="wwwroot\dist\raphael\Gruntfile.js" />
-    <None Include="wwwroot\dist\raphael\license.txt" />
-    <None Include="wwwroot\dist\raphael\raphael.js" />
-    <None Include="wwwroot\dist\raphael\raphael.min.js" />
-    <None Include="wwwroot\dist\raphael\raphael.no-deps.js" />
-    <None Include="wwwroot\dist\raphael\raphael.no-deps.min.js" />
-    <None Include="wwwroot\dist\raphael\webpack.config.js" />
   </ItemGroup>
 
   <ItemGroup>
@@ -420,5 +27,54 @@
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
   </ItemGroup>
+
+    <ItemGroup>
+		<Content Update="Views\Shared\_AdminLayout.cshtml">
+			<CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
+		</Content>
+		<Content Update="Views\Shared\**">
+			<CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
+		</Content>
+		<Content Update="Areas\**">
+			<CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
+		</Content>
+		<Content Update="wwwroot\dist\css\adminlte.min.css">
+			<CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
+		</Content>
+		<Content Update="wwwroot\dist\css\fontawesome-free\css\all.min.css">
+			<CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
+		</Content>
+		<Content Update="wwwroot\dist\css\overlayScrollbars\css\OverlayScrollbars.min.css">
+			<CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
+		</Content>
+		
+		<Content Update="wwwroot\dist\css\overlayScrollbarsx\js/OverlayScrollbars.min.js">
+			<CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
+		</Content>
+		<Content Update="wwwroot\dist\bootstrap\js\bootstrap.bundle.min.js">
+			<CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
+		</Content>
+		<Content Update="wwwroot\dist\jquery-mousewheel\jquery.mousewheel.js">
+			<CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
+		</Content>
+		<Content Update="wwwroot\dist\raphael\raphael.min.js">
+			<CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
+		</Content>
+		<Content Update="wwwroot\dist\jquery-mapael\jquery.mapael.min.js">
+			<CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
+		</Content>
+		<Content Update="wwwroot\dist\jquery\jquery.min.js">
+			<CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
+		</Content>
+		<Content Update="wwwroot\dist\js\adminlte.js">
+			<CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
+		</Content>
+	</ItemGroup>
+	
+	<ItemGroup>
+		<Folder Include="Areas\" />
+		<Folder Include="Views\Shared" />
+		<Folder Include="wwwroot\logo\" />
+	</ItemGroup>
 
 </Project>
