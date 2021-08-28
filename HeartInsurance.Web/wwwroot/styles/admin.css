@@ -1,17 +1,276 @@
-.FullSize
-{
+.FullSize {
     height: 100vh;
     width: 100%;
     background-color: #4a7abc;
     padding: 20px;
     padding-top: 6em
 }
-.input_control 
-{
+
+.input_control {
     background-color: #f3f3f3;
 }
-.sign-up-title 
-{
+
+.sign-up-title {
     color: #4a7abc;
     font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif
+}
+
+.admin-table {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+.patient-blood-pressure-head-container 
+{
+    width: 100%;
+    display: flex;
+    align-items: flex-end;
+    justify-content: space-between;
+}
+
+.patient-blood-pressure-head-container .patient-profile 
+{
+    width: 50%;
+    height: auto;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+.patient-blood-pressure-head-container .patient-profile .profile-row 
+{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    flex-direction: column;
+}
+
+.patient-blood-pressure-head-container .patient-profile .profile-photo 
+{
+    width: 168px;
+    height: 168px;
+    display: block;
+    border-radius: 50%;
+    background-image: url(https://cdn.idolnetworth.com/images/35/robert-downey-jr.jpg);
+    background-origin: content-box;
+    background-position: center;
+    background-size: cover;
+}
+
+.patient-blood-pressure-head-container .patient-profile .profile-row .patient-name 
+{
+    font-weight: bold;
+    font-size: 1.75rem;
+    padding: 1.115rem 0;
+}
+
+.patient-blood-pressure-head-container .patient-heart-metrics 
+{
+    width: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.patient-blood-pressure-head-container .patient-heart-metrics .weight-info-container 
+{
+    width: 48%;
+    min-height: 140px;
+    height: auto;
+    max-height: auto;
+    display: flex;
+    flex-direction: column;
+    border: 1px solid #DDDDDD;
+    padding: 1%;
+    border-radius: 4px;
+}
+
+.patient-blood-pressure-head-container .patient-heart-metrics .weight-info-container h4 
+{
+    width: 100%;
+    font-weight: 500;
+    font-size: 1.6rem;
+    text-align: center;
+    padding: 10px 0;
+}
+
+.patient-blood-pressure-head-container .patient-heart-metrics .weight-info-container .weight-info-box 
+{
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+    flex-direction: row;
+}
+
+.patient-blood-pressure-head-container .patient-heart-metrics .weight-info-container .weight-info-box .weight 
+{
+    width: 60%;
+    flex-direction: column;
+}
+
+.patient-blood-pressure-head-container .patient-heart-metrics .weight-info-container .weight-info-box .weight p 
+{
+    font-weight: bold;
+    font-size: 1.5rem;
+    padding: 0;
+    margin: 0;
+}
+
+.patient-blood-pressure-head-container .patient-heart-metrics .weight-info-container .weight-info-box .weight p span 
+{
+    font-weight: 500;
+    font-size: 0.75rem;
+}
+
+.patient-blood-pressure-head-container .patient-heart-metrics .weight-info-container .weight-info-box .weight last-week-weight span:first-child 
+{
+    font-weight: 500;
+    font-size: 0.75rem;
+    color: #707070;
+}
+
+.patient-blood-pressure-head-container .patient-heart-metrics .weight-info-container .weight-info-box .weight last-week-weight span:last-child 
+{
+    font-weight: 500;
+    font-size: 0.5rem;
+    color: #707070;
+}
+
+.patient-blood-pressure-head-container .patient-heart-metrics .weight-info-container .weight-info-box .weight-icon 
+{
+    display: flex;
+    width: 25%;
+    align-items: center;
+    justify-content: center;
+}
+
+.patient-blood-pressure-head-container .patient-heart-metrics .weight-info-container .weight-info-box .weight-icon svg 
+{
+    height: auto;
+    width: 100%;
+    color: red;
+}
+
+.patient-blood-pressure-head-container .patient-heart-metrics .heart-info-container 
+{
+    width: 48%;
+    min-height: 140px;
+    height: auto;
+    max-height: auto;
+    display: block;
+    border: 1px solid #DDDDDD;
+    padding: 1%;
+    border-radius: 4px;
+}
+
+.patient-blood-pressure-head-container .patient-heart-metrics .heart-info-container h4 
+{
+    font-weight: 500;
+    font-size: 1.6rem;
+    text-align: center;
+    padding: 10px 0;
+}
+
+.patient-blood-pressure-head-container .patient-heart-metrics .heart-info-container .heart 
+{
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+}
+
+.patient-blood-pressure-head-container .patient-heart-metrics .heart-info-container .heart .heart-bpm-container 
+{
+    width: 60%;
+    display: flex;
+    align-items: flex-start;
+    justify-content: flex-start;
+}
+
+.patient-blood-pressure-head-container .patient-heart-metrics .heart-info-container .heart .heart-bpm-container .heart-bpm 
+{
+    font-size: 1.75rem;
+    font-weight: bold;
+    padding: 0;
+}
+
+.patient-blood-pressure-head-container .patient-heart-metrics .heart-info-container .heart .heart-bpm-container .heart-bpm span 
+{
+    font-size: 0.75rem;
+    font-weight: 500;
+    color: #707070;
+    padding: 0;
+}
+
+.patient-blood-pressure-head-container .patient-heart-metrics .heart-info-container .heart .heart-icon 
+{
+    width: 25%;
+}
+
+.patient-blood-pressure-head-container .patient-heart-metrics .heart-info-container .heart .heart-icon svg 
+{
+    width: 100%;
+    height: auto;
+    color: red;
+}
+
+.patient-blood-pressure-head-container .patient-profile .profile-row .period-metrics 
+{
+    width: 50%;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    padding: 0;
+}
+
+.patient-blood-pressure-head-container .patient-profile .profile-row .period-metrics .period-metrics-btn 
+{
+    width: 135px;
+    height: 2rem;
+    outline: none;
+    border: 1px solid white;
+    transition: 0.3s;
+    background-color: #DDD;
+}
+
+.patient-blood-pressure-head-container .patient-profile .profile-row .period-metrics .period-metrics-btn:hover 
+{
+    background: #4a7abc;
+    color: white;
+}
+
+.patient-blood-pressure-head-container .patient-profile .profile-row .period-metrics .period-metrics-btn:first-child 
+{
+    border-start-start-radius: 20px;
+    border-end-start-radius: 20px;
+    outline: none;
+}
+
+.patient-blood-pressure-head-container .patient-profile .profile-row .period-metrics .period-metrics-btn:last-child 
+{
+    border-start-end-radius: 20px;
+    border-end-end-radius: 20px;
+    outline: none;
+}
+
+.metrics-container 
+{
+    padding: 20px 0;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.metrics-container span 
+{
+    width: 49%;
+}
+
+.metrics-container span canvas 
+{
+    width: 100%;
 }
